@@ -100,4 +100,4 @@ class hangUp():
 
 
 if __name__ == '__main__':
-    hangUp('18219110320', 'yiny2336')
+    hangUp('username', 'passwd')
