@@ -5,7 +5,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 import time
-from random import randint
 from time import sleep
 from selenium.webdriver.common.action_chains import ActionChains
 
