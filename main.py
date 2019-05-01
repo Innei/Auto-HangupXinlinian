@@ -11,10 +11,11 @@ from selenium.common.exceptions import UnexpectedAlertPresentException
 
 class hangUp():
 
-    def __init__(self, username, passwd):
+    def __init__(self, username, passwd, needtime):
 
         self.username = username
         self.password = passwd
+        self.needtime = needtime
         self.chrome_options = Options()
         # 设置chrome浏览器无界面模式
         self.chrome_options.add_argument('--headless')
@@ -90,7 +91,7 @@ class hangUp():
         self.browser.switch_to.default_content()  # 切换回主布局
         while True:
 
-            print('当前时间', int(time.time()) - self.time , '当前已经挂了',self.num,'节课了')
+            print('当前时间', int(time.time()) - self.time , '\t当前已经挂了',self.num,'节课了')
             try:
                 mess = self.wait.until(EC.element_to_be_clickable(
                     (By.CSS_SELECTOR, '#frameless > div.tcontent > div > input[type="button"]'))).click()
@@ -100,7 +101,7 @@ class hangUp():
                 pass
             else:
                 print('检测到弹窗')
-            if int(time.time()) - self.time > 1100:
+            if int(time.time()) - self.time > self.needtime:
                 print('时间到了, 切换下一课')
                 self.num += 1
                 break
@@ -108,4 +109,4 @@ class hangUp():
 
 if __name__ == '__main__':
 
-    hangUp(input('username: '), input('passwd: '))
+    hangUp(input('username: '), input('passwd: '), input('time: '))
