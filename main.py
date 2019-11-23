@@ -15,10 +15,8 @@ class hangUp():
 
         self.username = username
         self.password = passwd
-        self.needtime = needtime
+        self.needtime = int(needtime)
         self.chrome_options = Options()
-        # 设置chrome浏览器无界面模式
-        self.chrome_options.add_argument('--headless')
         self.browser = webdriver.Chrome(options=self.chrome_options)
         self.browser.get('http://192.168.9.12/npels/')
         self.wait = WebDriverWait(self.browser, 60)
@@ -105,7 +103,6 @@ class hangUp():
                 print('时间到了, 切换下一课')
                 self.num += 1
                 break
-
 
 if __name__ == '__main__':
 
